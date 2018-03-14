@@ -1,0 +1,37 @@
+<Page xmlns:df="nativescript-ui-dataform"
+      loaded="onLoad">
+    <GridLayout>
+        <!-- Form -->
+        <df:RadDataForm source="{{ ccDetails }}"
+                        commitMode="OnLostFocus"
+                        validationMode="OnLostFocus">
+            <df:RadDataForm.properties>
+
+                <!-- Card number -->
+                <df:EntityProperty name="number"
+                                   android:displayName="Card Number"
+                                   ios:hintText="Card Number" index="0">
+                    <df:EntityProperty.editor>
+                        <df:PropertyEditor type="Number">
+                            <df:PropertyEditor.propertyEditorStyle>
+                                <df:PropertyEditorStyle ios:labelHidden="true"
+                                                        ios:labelWidth="0"/>
+                            </df:PropertyEditor.propertyEditorStyle>
+                        </df:PropertyEditor>
+                    </df:EntityProperty.editor>
+                    <df:EntityProperty.validators>
+                        <df:NonEmptyValidator />
+                        <df:MaximumLengthValidator
+                                errorMessage="Card number cannot be more than 16 digits!"
+                                length="16" />
+                        <df:MinimumLengthValidator
+                                errorMessage="Card number cannot be less than 16 digits!"
+                                length="16" />
+                    </df:EntityProperty.validators>
+                </df:EntityProperty>
+
+            </df:RadDataForm.properties>
+
+        </df:RadDataForm>
+    </GridLayout>
+</Page>
